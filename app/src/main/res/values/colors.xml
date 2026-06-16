@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- GymBud Design System -->
+    <!-- Primary palette: Dark base + Electric Lime accent -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- Dark Theme Colors -->
+    <color name="dark_background">#FF0D0D0D</color>
+    <color name="dark_surface">#FF1A1A1A</color>
+    <color name="dark_surface_variant">#FF252525</color>
+    <color name="dark_border">#FF2A2A2A</color>
+
+    <!-- Light Theme Colors -->
+    <color name="light_background">#FFF5F5F5</color>
+    <color name="light_surface">#FFFFFFFF</color>
+    <color name="light_surface_variant">#FFEDEDED</color>
+    <color name="light_border">#FFE0E0E0</color>
+
+    <!-- Accent -->
+    <color name="lime_accent">#FFC8FF00</color>
+    <color name="lime_accent_dark">#FF9ECC00</color>
+    <color name="lime_on_accent">#FF0D0D0D</color>
+
+    <!-- Text -->
+    <color name="text_primary_dark">#FFFFFFFF</color>
+    <color name="text_secondary_dark">#FFB0B0B0</color>
+    <color name="text_muted_dark">#FF808080</color>
+
+    <color name="text_primary_light">#FF0D0D0D</color>
+    <color name="text_secondary_light">#FF555555</color>
+    <color name="text_muted_light">#FF888888</color>
+
+    <!-- Status -->
+    <color name="error_red">#FFFF4444</color>
+    <color name="success_green">#FF00CC88</color>
+    <color name="warning_orange">#FFFFAA00</color>
+
+    <!-- Transparent overlays -->
+    <color name="scrim_dark">#CC000000</color>
+    <color name="ripple_lime">#33C8FF00</color>
+</resources>

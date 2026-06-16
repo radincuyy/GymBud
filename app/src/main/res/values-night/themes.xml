@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Dark Theme (Night Mode) -->
+    <style name="Base.Theme.GymBud" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/lime_accent</item>
+        <item name="colorOnPrimary">@color/lime_on_accent</item>
+        <item name="colorPrimaryContainer">@color/lime_accent</item>
+        <item name="colorOnPrimaryContainer">@color/lime_on_accent</item>
+        <item name="colorSecondary">@color/lime_accent_dark</item>
+        <item name="colorOnSecondary">@color/lime_on_accent</item>
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorSurfaceVariant">@color/dark_surface_variant</item>
+        <item name="colorOnSurface">@color/text_primary_dark</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary_dark</item>
+        <item name="colorError">@color/error_red</item>
+        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:navigationBarColor">@color/dark_surface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+</resources>

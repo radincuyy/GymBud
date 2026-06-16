@@ -1,0 +1,41 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Light Theme -->
+    <style name="Base.Theme.GymBud" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/lime_accent</item>
+        <item name="colorOnPrimary">@color/lime_on_accent</item>
+        <item name="colorPrimaryContainer">@color/lime_accent</item>
+        <item name="colorOnPrimaryContainer">@color/lime_on_accent</item>
+        <item name="colorSecondary">@color/lime_accent_dark</item>
+        <item name="colorOnSecondary">@color/lime_on_accent</item>
+        <item name="android:colorBackground">@color/light_background</item>
+        <item name="colorSurface">@color/light_surface</item>
+        <item name="colorSurfaceVariant">@color/light_surface_variant</item>
+        <item name="colorOnSurface">@color/text_primary_light</item>
+        <item name="colorOnSurfaceVariant">@color/text_secondary_light</item>
+        <item name="colorError">@color/error_red</item>
+        <item name="android:statusBarColor">@color/light_background</item>
+        <item name="android:navigationBarColor">@color/light_surface</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="Theme.GymBud" parent="Base.Theme.GymBud" />
+
+    <!-- Splash Theme: fullscreen, no status bar -->
+    <style name="Theme.GymBud.Splash" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowBackground">@color/dark_background</item>
+        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:navigationBarColor">@color/dark_background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+    </style>
+
+    <!-- Auth Theme: always dark for auth screens -->
+    <style name="Theme.GymBud.Auth" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/lime_accent</item>
+        <item name="colorOnPrimary">@color/lime_on_accent</item>
+        <item name="android:colorBackground">@color/dark_background</item>
+        <item name="colorSurface">@color/dark_surface</item>
+        <item name="colorOnSurface">@color/text_primary_dark</item>
+        <item name="android:statusBarColor">@color/dark_background</item>
+        <item name="android:navigationBarColor">@color/dark_background</item>
+    </style>
+</resources>
