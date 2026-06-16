@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Adaptive Colors (Dark Mode Overrides) -->
+    <color name="adaptive_background">@color/dark_background</color>
+    <color name="adaptive_surface">@color/dark_surface</color>
+    <color name="adaptive_surface_variant">@color/dark_surface_variant</color>
+    <color name="adaptive_border">@color/dark_border</color>
+    <color name="adaptive_text_secondary">@color/text_secondary_dark</color>
+    <color name="soft_red_bg">#26F15E6C</color>
+</resources>

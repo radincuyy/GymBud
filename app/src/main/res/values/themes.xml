@@ -28,14 +28,9 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
     </style>
 
-    <!-- Auth Theme: always dark for auth screens -->
-    <style name="Theme.GymBud.Auth" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="colorPrimary">@color/lime_accent</item>
-        <item name="colorOnPrimary">@color/lime_on_accent</item>
-        <item name="android:colorBackground">@color/dark_background</item>
-        <item name="colorSurface">@color/dark_surface</item>
-        <item name="colorOnSurface">@color/text_primary_dark</item>
-        <item name="android:statusBarColor">@color/dark_background</item>
-        <item name="android:navigationBarColor">@color/dark_background</item>
+    <!-- Auth Theme: adaptive auth screens -->
+    <style name="Theme.GymBud.Auth" parent="Theme.GymBud">
+        <item name="android:statusBarColor">?android:attr/colorBackground</item>
+        <item name="android:navigationBarColor">?android:attr/colorBackground</item>
     </style>
 </resources>

@@ -29,6 +29,7 @@
     <string name="nav_exercises">Exercises</string>
     <string name="nav_history">History</string>
     <string name="nav_profile">Profile</string>
+    <string name="nav_stats">Stats</string>
 
     <!-- Dashboard -->
     <string name="good_morning">Good Morning,</string>
@@ -99,7 +100,6 @@
     <string name="kg_unit">kg</string>
     <string name="min_unit">min</string>
     <string name="settings">Settings</string>
-    <string name="workout_reminder">Workout Reminder</string>
     <string name="dark_mode">Dark Mode</string>
     <string name="share_progress">Share Progress</string>
     <string name="about">About</string>
@@ -108,9 +108,4 @@
     <string name="about_text">GymBud v1.0\nYour personal fitness tracker\nTrack. Lift. Grow.</string>
 
     <!-- Broadcast Receiver -->
-    <string name="reminder_title">Time to Work Out!</string>
-    <string name="reminder_text">Your GymBud is waiting. Let\'s hit those gains!</string>
-    <string name="reminder_channel">Workout Reminders</string>
-    <string name="reminder_set">Reminder set for %1$s</string>
-    <string name="reminder_cancelled">Reminder cancelled</string>
 </resources>
