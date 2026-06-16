@@ -200,29 +200,61 @@ class WorkoutDao(context: Context) {
         var streak = 0
         var previousDate = ""
 
-        while (cursor.moveToNext()) {
-            val date = cursor.getString(0)
-            if (streak == 0) {
-                streak = 1
-                previousDate = date
-            } else {
-                val prevParts = previousDate.split("-").map { it.toInt() }
-                val currParts = date.split("-").map { it.toInt() }
-
-                val prevDay = prevParts[0] * 365 + prevParts[1] * 30 + prevParts[2]
-                val currDay = currParts[0] * 365 + currParts[1] * 30 + currParts[2]
-
-                if (prevDay - currDay == 1) {
-                    streak++
+        try {
+            while (cursor.moveToNext()) {
+                val date = cursor.getString(0) ?: continue
+                if (streak == 0) {
+                    streak = 1
                     previousDate = date
                 } else {
-                    break
+                    val prevParts = previousDate.split("-").map { it.toInt() }
+                    val currParts = date.split("-").map { it.toInt() }
+
+                    if (prevParts.size == 3 && currParts.size == 3) {
+                        val prevDay = prevParts[0] * 365 + prevParts[1] * 30 + prevParts[2]
+                        val currDay = currParts[0] * 365 + currParts[1] * 30 + currParts[2]
+
+                        if (prevDay - currDay == 1) {
+                            streak++
+                            previousDate = date
+                        } else {
+                            break
+                        }
+                    } else {
+                        break
+                    }
                 }
+            }
+        } catch (e: Exception) {
+        } finally {
+            cursor.close()
+            db.close()
+        }
+        return streak
+    }
+
+    fun getPersonalRecords(userId: Long): Map<String, Double> {
+        val records = linkedMapOf<String, Double>()
+        val db = dbHelper.readableDatabase
+        val cursor = db.rawQuery(
+            """SELECT ${DatabaseHelper.COL_WORKOUT_EXERCISE}, MAX(${DatabaseHelper.COL_WORKOUT_WEIGHT}) 
+               FROM ${DatabaseHelper.TABLE_WORKOUTS} 
+               WHERE ${DatabaseHelper.COL_WORKOUT_USER_ID} = ? 
+               AND ${DatabaseHelper.COL_WORKOUT_WEIGHT} > 0
+               GROUP BY ${DatabaseHelper.COL_WORKOUT_EXERCISE}
+               ORDER BY MAX(${DatabaseHelper.COL_WORKOUT_WEIGHT}) DESC""",
+            arrayOf(userId.toString())
+        )
+        while (cursor.moveToNext()) {
+            val exercise = cursor.getString(0)
+            val maxWeight = cursor.getDouble(1)
+            if (exercise != null) {
+                records[exercise] = maxWeight
             }
         }
         cursor.close()
         db.close()
-        return streak
+        return records
     }
 
     private fun cursorToWorkout(cursor: android.database.Cursor): Workout {

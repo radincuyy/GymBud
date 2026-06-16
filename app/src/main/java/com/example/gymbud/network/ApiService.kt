@@ -9,7 +9,7 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("exercise/")
+    @GET("exerciseinfo/")
     fun getExercises(
         @Query("format") format: String = "json",
         @Query("language") language: Int = 2,   // English
@@ -17,7 +17,7 @@ interface ApiService {
         @Query("offset") offset: Int = 0
     ): Call<ExerciseResponse>
 
-    @GET("exercise/")
+    @GET("exerciseinfo/")
     fun getExercisesByCategory(
         @Query("format") format: String = "json",
         @Query("language") language: Int = 2,
