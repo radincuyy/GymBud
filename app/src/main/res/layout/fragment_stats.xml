@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:id="@+id/clStatsRoot">
+
+        <!-- Screen Title -->
+        <TextView
+            android:id="@+id/tvStatsTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Statistik Latihan"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Weekly Stats Overview Card Grid -->
+        <LinearLayout
+            android:id="@+id/weeklyStatsGrid"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvStatsTitle">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_card_dark"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tvProfileWorkouts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/lime_accent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/total_workouts"
+                    android:textSize="11sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/bg_card_dark"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="bottom">
+
+                    <TextView
+                        android:id="@+id/tvProfileVolume"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lime_accent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
+                        android:layout_marginBottom="1dp"
+                        android:text="kg"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/lime_accent" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/total_volume"
+                    android:textSize="11sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_card_dark"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="12dp">
+
+                <TextView
+                    android:id="@+id/tvProfileStreak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/lime_accent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/streak"
+                    android:textSize="11sp"
+                    android:textColor="?attr/colorOnSurfaceVariant" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Chart Card (Custom Visual Bar Chart Representation) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardWeeklyChart"
+            android:layout_width="0dp"
+            android:layout_height="220dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/weeklyStatsGrid">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weekly Workout Distribution"
+                    android:textSize="12sp"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textStyle="bold" />
+
+                <!-- Bar Container -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal"
+                    android:gravity="bottom"
+                    android:layout_marginTop="8dp"
+                    android:weightSum="7">
+
+                    <!-- Monday -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvMonVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
+                            android:visibility="invisible" />
+                        <View
+                            android:id="@+id/barMon"
+                            android:layout_width="16dp"
+                            android:layout_height="20dp"
+                            android:background="@drawable/bg_button_lime" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="M"
+                            android:textSize="10sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Tuesday -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvTueVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
+                            android:visibility="invisible" />
+                        <View
+                            android:id="@+id/barTue"
+                            android:layout_width="16dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/bg_button_lime" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="T"
+                            android:textSize="10sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Wednesday -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvWedVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
+                            android:visibility="invisible" />
+                        <View
+                            android:id="@+id/barWed"
+                            android:layout_width="16dp"
+                            android:layout_height="10dp"
+                            android:background="@drawable/bg_button_lime" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="W"
+                            android:textSize="10sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Thursday -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvThuVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
+                            android:visibility="invisible" />
+                        <View
+                            android:id="@+id/barThu"
+                            android:layout_width="16dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/bg_button_lime" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="T"
+                            android:textSize="10sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Friday -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvFriVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
+                            android:visibility="invisible" />
+                        <View
+                            android:id="@+id/barFri"
+                            android:layout_width="16dp"
+                            android:layout_height="30dp"
+                            android:background="@drawable/bg_button_lime" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="F"
+                            android:textSize="10sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Saturday -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvSatVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
+                            android:visibility="invisible" />
+                        <View
+                            android:id="@+id/barSat"
+                            android:layout_width="16dp"
+                            android:layout_height="80dp"
+                            android:background="@drawable/bg_button_lime" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S"
+                            android:textSize="10sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+
+                    <!-- Sunday -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="bottom|center_horizontal"
+                        android:orientation="vertical">
+                        <TextView
+                            android:id="@+id/tvSunVal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:textColor="?attr/colorOnSurface"
+                            android:visibility="invisible" />
+                        <View
+                            android:id="@+id/barSun"
+                            android:layout_width="16dp"
+                            android:layout_height="15dp"
+                            android:background="@drawable/bg_button_lime" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="S"
+                            android:textSize="10sp"
+                            android:textColor="?attr/colorOnSurfaceVariant"
+                            android:layout_marginTop="4dp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardPR"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="24dp"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="?attr/colorSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardWeeklyChart"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rekor Pribadi Latihan (PR)"
+                    android:textSize="14sp"
+                    android:textColor="?attr/colorOnSurface"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/layoutPRContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
