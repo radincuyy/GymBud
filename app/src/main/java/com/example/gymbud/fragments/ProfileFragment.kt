@@ -7,6 +7,7 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -39,6 +40,7 @@ class ProfileFragment : Fragment() {
     private lateinit var btnShareProgress: LinearLayout
     private lateinit var btnSetReminder: LinearLayout
     private lateinit var btnAbout: LinearLayout
+    private lateinit var btnContactUs: LinearLayout
     private lateinit var btnLogout: LinearLayout
 
     private lateinit var sessionManager: SessionManager
@@ -74,6 +76,7 @@ class ProfileFragment : Fragment() {
         btnShareProgress = view.findViewById(R.id.btnShareProgress)
         btnSetReminder = view.findViewById(R.id.btnSetReminder)
         btnAbout = view.findViewById(R.id.btnAbout)
+        btnContactUs = view.findViewById(R.id.btnContactUs)
         btnLogout = view.findViewById(R.id.btnLogout)
 
         // Populate User Info
@@ -100,6 +103,11 @@ class ProfileFragment : Fragment() {
         // About dialog
         btnAbout.setOnClickListener {
             showAboutDialog()
+        }
+
+        // Contact Us (Implicit Intent)
+        btnContactUs.setOnClickListener {
+            openWhatsApp()
         }
 
         // Logout
@@ -200,6 +208,22 @@ class ProfileFragment : Fragment() {
             .setMessage(R.string.about_text)
             .setPositiveButton(R.string.cancel, null)
             .show()
+    }
+
+    private fun openWhatsApp() {
+        val phoneNumber = "+6281210926089"
+        val message = "Halo GymBud, saya ingin bertanya tentang Kelompok 5"
+        val url = "https://api.whatsapp.com/send?phone=$phoneNumber&text=${Uri.encode(message)}"
+        
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(url)
+        }
+        
+        try {
+            startActivity(intent)
+        } catch (e: Exception) {
+            Toast.makeText(requireContext(), "WhatsApp tidak terinstal", Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun showLogoutDialog() {

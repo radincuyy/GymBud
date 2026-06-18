@@ -113,4 +113,5 @@
     <string name="reminder_set_for">Reminder set for %s</string>
     <string name="notification_title">Waktunya Olahraga!</string>
     <string name="notification_content">Ayo ke gym dan capai target harianmu bersama GymBud! 💪</string>
+    <string name="contact_us">Contact Us via WhatsApp</string>
 </resources>
