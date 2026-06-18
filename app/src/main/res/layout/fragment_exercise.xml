@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
+    android:padding="16dp"
+    android:id="@+id/clExerciseRoot">
+
+    <!-- Screen Title -->
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/exercise_library"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Search Box -->
+    <EditText
+        android:id="@+id/etSearch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/bg_input_dark"
+        android:hint="@string/search_exercises"
+        android:textColorHint="?attr/colorOnSurfaceVariant"
+        android:textColor="?attr/colorOnSurface"
+        android:padding="12dp"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textSize="14sp"
+        android:drawableStart="@android:drawable/ic_menu_search"
+        android:drawablePadding="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvTitle" />
+
+    <!-- Horizontal Category Scroll -->
+    <HorizontalScrollView
+        android:id="@+id/categoryScroll"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etSearch">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chipGroupCategories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipAll"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_categories"
+                android:checked="true"
+                app:chipBackgroundColor="@color/bg_chip_color"
+                app:chipStrokeWidth="0dp"
+                app:checkedIconVisible="false"
+                android:textColor="@color/text_chip_color" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipChest"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_chest"
+                app:chipBackgroundColor="@color/bg_chip_color"
+                app:chipStrokeWidth="0dp"
+                app:checkedIconVisible="false"
+                android:textColor="@color/text_chip_color" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipBack"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_back"
+                app:chipBackgroundColor="@color/bg_chip_color"
+                app:chipStrokeWidth="0dp"
+                app:checkedIconVisible="false"
+                android:textColor="@color/text_chip_color" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipLegs"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_legs"
+                app:chipBackgroundColor="@color/bg_chip_color"
+                app:chipStrokeWidth="0dp"
+                app:checkedIconVisible="false"
+                android:textColor="@color/text_chip_color" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipArms"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_arms"
+                app:chipBackgroundColor="@color/bg_chip_color"
+                app:chipStrokeWidth="0dp"
+                app:checkedIconVisible="false"
+                android:textColor="@color/text_chip_color" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipShoulders"
+                style="@style/Widget.Material3.Chip.Filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/category_shoulders"
+                app:chipBackgroundColor="@color/bg_chip_color"
+                app:chipStrokeWidth="0dp"
+                app:checkedIconVisible="false"
+                android:textColor="@color/text_chip_color" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView Grid -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvExercises"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryScroll" />
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:indeterminateTint="@color/lime_accent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Error View -->
+    <LinearLayout
+        android:id="@+id/errorLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/error_loading"
+            android:textColor="?attr/colorOnSurfaceVariant"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp" />
+
+        <Button
+            android:id="@+id/btnRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            android:backgroundTint="@color/lime_accent"
+            android:textColor="@color/lime_on_accent" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
