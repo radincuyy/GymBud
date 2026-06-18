@@ -14,6 +14,7 @@ import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -21,6 +22,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.example.gymbud.R
 import com.example.gymbud.activities.LoginActivity
 import com.example.gymbud.database.WorkoutDao
@@ -35,6 +38,7 @@ class ProfileFragment : Fragment() {
 
     private lateinit var tvProfileName: TextView
     private lateinit var tvProfileEmail: TextView
+    private lateinit var ivAvatar: ImageView
 
     private lateinit var switchDarkMode: SwitchMaterial
     private lateinit var btnShareProgress: LinearLayout
@@ -71,6 +75,7 @@ class ProfileFragment : Fragment() {
         // Bind views
         tvProfileName = view.findViewById(R.id.tvProfileName)
         tvProfileEmail = view.findViewById(R.id.tvProfileEmail)
+        ivAvatar = view.findViewById(R.id.ivAvatar)
 
         switchDarkMode = view.findViewById(R.id.switchDarkMode)
         btnShareProgress = view.findViewById(R.id.btnShareProgress)
@@ -80,8 +85,18 @@ class ProfileFragment : Fragment() {
         btnLogout = view.findViewById(R.id.btnLogout)
 
         // Populate User Info
-        tvProfileName.text = sessionManager.getUserName()
+        val userName = sessionManager.getUserName()
+        tvProfileName.text = userName
         tvProfileEmail.text = sessionManager.getUserEmail()
+
+        // Generate Random Cartoon Avatar based on Name using DiceBear
+        val avatarUrl = "https://api.dicebear.com/9.x/avataaars/png?seed=${Uri.encode(userName)}&backgroundColor=b6e3f4,c0aede,d1d4f9"
+        Glide.with(this)
+            .load(avatarUrl)
+            .transform(CircleCrop())
+            .placeholder(R.drawable.bg_avatar_circle)
+            .error(R.drawable.bg_avatar_circle)
+            .into(ivAvatar)
 
         // Setup Dark Mode Toggle
         switchDarkMode.isChecked = themeManager.isDarkMode()
