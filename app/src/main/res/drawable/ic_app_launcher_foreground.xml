@@ -1,0 +1,10 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Path 'G' yang dirancang khusus untuk kemiripan 100% dengan Sans-Serif-Black -->
+    <path
+        android:fillColor="@color/lime_accent"
+        android:pathData="M54,20C35.22,20,20,35.22,20,54s15.22,34,34,34c11.5,0,21.6-5.7,27.8-14.4l-12.2-8.1C65.5,71.5,60,74,54,74 c-11,0-20-9-20-20s9-20,20-20c5.5,0,10.5,2.3,14,6l11-11C72.5,23.5,64,20,54,20z M72,44v12H48v9h36V44H72z" />
+</vector>
