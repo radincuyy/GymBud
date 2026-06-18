@@ -108,4 +108,9 @@
     <string name="about_text">GymBud v1.0\nYour personal fitness tracker\nTrack. Lift. Grow.</string>
 
     <!-- Broadcast Receiver -->
+    <string name="workout_reminder">Workout Reminder</string>
+    <string name="set_reminder_time">Set Reminder Time</string>
+    <string name="reminder_set_for">Reminder set for %s</string>
+    <string name="notification_title">Waktunya Olahraga!</string>
+    <string name="notification_content">Ayo ke gym dan capai target harianmu bersama GymBud! 💪</string>
 </resources>
